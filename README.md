@@ -20,7 +20,7 @@ Variables
 -   `noun`: The noun used to search for the Wikipedia article.
 -   `text`: The text from the article.
 -   `element_id`: The article number.
--   `sentence_id`: The sentence within the .
+-   `sentence_id`: The sentence within the `element_id`.
 
 Sample Slice
 ------------

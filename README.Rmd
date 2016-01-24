@@ -29,7 +29,7 @@ verbadge <- sprintf('<a href="https://img.shields.io/badge/Version-%s-orange.svg
 * `noun`: The noun used to search for the Wikipedia article.
 * `text`:  The text from the article.
 * `element_id`:  The article number.
-* `sentence_id`:  The sentence within the \code{element_id}.
+* `sentence_id`:  The sentence within the `element_id`.
 
 ## Sample Slice
 
