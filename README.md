@@ -14,8 +14,18 @@ Status](https://coveralls.io/repos/trinker/wikidata/badge.svg?branch=master)](ht
 [Wikipedia](https://www.wikipedia.org/) articles scraped from a noun
 list search.
 
+
+Table of Contents
+============
+
+-   [[Variables](#variables)](#[variables](#variables))
+-   [[Sample Slice](#sample-slice)](#[sample-slice](#sample-slice))
+-   [[Installation](#installation)](#[installation](#installation))
+-   [[Contact](#contact)](#[contact](#contact))
+
 Variables
----------
+============
+
 
 -   `noun`: The noun used to search for the Wikipedia article.
 -   `text`: The text from the article.
@@ -86,18 +96,8 @@ Sample Slice
 </tbody>
 </table>
 
-
-Table of Contents
-============
-
--   [[Variables](#variables)](#[variables](#variables))
--   [[Sample Slice](#sample-slice)](#[sample-slice](#sample-slice))
--   [[Installation](#installation)](#[installation](#installation))
--   [[Contact](#contact)](#[contact](#contact))
-
 Installation
 ============
-
 
 To download the development version of **wikidata**:
 
