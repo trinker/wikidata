@@ -1,0 +1,59 @@
+---
+title: "wikidata"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  md_document:
+    toc: true      
+---
+
+```{r, echo=FALSE}
+desc <- suppressWarnings(readLines("DESCRIPTION"))
+regex <- "(^Version:\\s+)(\\d+\\.\\d+\\.\\d+)"
+loc <- grep(regex, desc)
+ver <- gsub(regex, "\\2", desc[loc])
+verbadge <- sprintf('<a href="https://img.shields.io/badge/Version-%s-orange.svg"><img src="https://img.shields.io/badge/Version-%s-orange.svg" alt="Version"/></a></p>', ver, ver)
+````
+
+[![Build Status](https://travis-ci.org/trinker/wikidata.svg?branch=master)](https://travis-ci.org/trinker/wikidata)
+[![Coverage Status](https://coveralls.io/repos/trinker/wikidata/badge.svg?branch=master)](https://coveralls.io/r/trinker/wikidata?branch=master)
+`r verbadge`
+
+<img src="inst/wikidata_logo/wiki.png" width="250" alt="wikipedia data">  
+
+
+**wikidata** is a corpus (`data.frame` format) of [Wikipedia](https://www.wikipedia.org/) articles scraped from a noun list search.
+
+## Variables
+
+
+* `noun`: The noun used to search for the Wikipedia article.
+* `text`:  The text from the article.
+* `element_id`:  The article number.
+* `sentence_id`:  The sentence within the \code{element_id}.
+
+## Sample Slice
+
+```{r, echo=FALSE}
+set.seed(21)
+qdap::htruncdf(data.frame(wikidata::wikipedia[sort(sample(1:nrow(wikidata::wikipedia), 7)),]), 7, 100) %>%
+    dplyr::mutate(text = ifelse(grepl("\\.$", text), as.character(text), paste0(text, "..."))) %>%
+    pander::pander(justify = c('left', 'left', 'right', 'right'))
+```
+
+# Installation
+
+To download the development version of **wikidata**:
+
+Download the [zip ball](https://github.com/trinker/wikidata/zipball/master) or [tar ball](https://github.com/trinker/wikidata/tarball/master), decompress and run `R CMD INSTALL` on it, or use the **pacman** package to install the development version:
+
+```r
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load_gh("trinker/wikidata")
+```
+
+# Contact
+
+You are welcome to:    
+* submit suggestions and bug-reports at: <https://github.com/trinker/wikidata/issues>    
+* send a pull request on: <https://github.com/trinker/wikidata/>
+* compose a friendly e-mail to: <tyler.rinker@gmail.com>    
