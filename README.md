@@ -20,6 +20,7 @@ Table of Contents
 
 -   [[Variables](#variables)](#[variables](#variables))
 -   [[Sample Slice](#sample-slice)](#[sample-slice](#sample-slice))
+-   [[Lookup](#lookup)](#[lookup](#lookup))
 -   [[Installation](#installation)](#[installation](#installation))
 -   [[Contact](#contact)](#[contact](#contact))
 
@@ -96,6 +97,28 @@ Sample Slice
 </tbody>
 </table>
 
+Lookup
+======
+
+    if (!require("pacman")) install.packages("pacman")
+    pacman::p_load_gh('trinker/wikidata')
+    pacman::p_load(data.table, stringdist)
+
+
+    wiki_look <- function(x, method = 'osa', cutoff = 3, ...){
+        vals <- stringdist::stringdist(
+            SnowballC::wordStem(tolower(wikipedia[["noun"]])), 
+            SnowballC::wordStem(tolower(x)), 
+            method
+        )
+        if (min(vals) > cutoff) stop('No nouns meet the cutoff')
+        word <- as.character(wikipedia[which.min(vals), "noun", with=FALSE])
+        wikipedia[noun %in% word,]
+    }
+
+    wiki_look('dog')
+    wiki_look('dog')[, .(text = paste(text, collapse = " ")), by = c('noun')]
+
 Installation
 ============
 
@@ -116,4 +139,6 @@ Contact
 You are welcome to:   
 * submit suggestions and bug-reports at: <https://github.com/trinker/wikidata/issues>   
 * send a pull request on: <https://github.com/trinker/wikidata/> 
-* compose a friendly e-mail to: <tyler.rinker@gmail.com>
+*
+
+compose a friendly e-mail to: <tyler.rinker@gmail.com>
